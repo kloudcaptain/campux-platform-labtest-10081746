@@ -1,0 +1,16 @@
+name: Hello CI
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Report the facts
+        run: |
+          echo "Actor:  ${{ github.actor }}"
+          echo "Event:  ${{ github.event_name }}"
+          ls -la
