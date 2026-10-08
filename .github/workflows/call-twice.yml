@@ -1,0 +1,9 @@
+name: Call it twice
+on: workflow_dispatch
+jobs:
+  check-dev:
+    uses: ./.github/workflows/greet-reusable.yml
+    with: { environment: dev }
+  check-prod:
+    uses: ./.github/workflows/greet-reusable.yml
+    with: { environment: prod }

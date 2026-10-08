@@ -1,0 +1,14 @@
+name: Reusable greeter
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+       - env:
+           TARGET_ENV: ${{ inputs.environment }}
+         run: printf 'Validating for %s\n' "$TARGET_ENV"
