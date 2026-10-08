@@ -1,0 +1,28 @@
+name: First workflow
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Confirm the README is present
+        run: test -f README.md
+
+      - name: Create a tiny build output
+        run: |
+          mkdir -p site
+          printf '%s\n' '<h1>Built by GitHub Actions</h1>' > site/index.html
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: sample-site
+          path: site/
+          if-no-files-found: error
