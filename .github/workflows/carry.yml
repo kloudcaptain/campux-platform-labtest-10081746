@@ -19,9 +19,9 @@ jobs:
     steps:
       - id: pip-cache
         uses: actions/cache@v4
-         with:
-           path: ./deps
-           key: deps-${{ runner.os }}-pandas-demo-v1
-       - if: steps.pip-cache.outputs.cache-hit != 'true'
-         run: pip install --target ./deps "pandas>=2,<3"
-       - run: du -sh ./deps
+        with:
+          path: ./deps
+          key: deps-${{ runner.os }}-pandas-demo-v1
+      - if: steps.pip-cache.outputs.cache-hit != 'true'
+        run: pip install --target ./deps "pandas>=2,<3"
+      - run: du -sh ./deps
